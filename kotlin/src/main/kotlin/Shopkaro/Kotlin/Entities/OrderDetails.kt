@@ -36,6 +36,16 @@ class OrderDetails(
 
     @OneToOne
     @JoinColumn(name = "cart_id")
-    var cartDetails: CartDetails
+    var cartDetails: CartDetails?
+
+
 ) {
+
+    constructor(name : String, location : String, doo : String, dod : String, amount : Int) : this(0,name,location,doo,dod,amount,null){
+        this.name = name
+        this.location = location
+        this.DoO = doo
+        this.DoD=dod
+        this.amountPayable = amount
+    }
 }

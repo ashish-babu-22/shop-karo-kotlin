@@ -15,26 +15,35 @@ class CartServiceImple : CartService {
     lateinit var cartRepo : CartRepo
 
     @Autowired
-    lateinit var productsDAO : ProductRepo
-    override fun showCartItems(id: Int): List<ProductDetails?>? {
-        val temp: Optional<CartDetails> = cartRepo.findById(id)?:throw UserNotFoundException("User Not Found with ID =$id")
+    lateinit var productRepo: ProductRepo
+
+
+    override fun showCartItems(id: Int?): List<ProductDetails?>? {
+        val temp: Optional<CartDetails> = id?.let { cartRepo.findById(it) } ?:throw UserNotFoundException("User Not Found with ID =$id")
 
         return temp.get().cartItems
     }
 
-    override fun selectProductById(id: Int): ProductDetails? {
-        val res: Optional<ProductDetails> = productsDAO.findById(id)?:throw ProductNotFoundException("Enter a valid Product ID - $id")
+    override fun selectProductById(id: Int?): ProductDetails {
+        val res: Optional<ProductDetails?> = id?.let { productRepo.findById(it) } ?:throw ProductNotFoundException("Enter a valid Product ID")
+        if(res.isEmpty)throw ProductNotFoundException("Product not found with id $id")
         return res.get()
     }
 
-    override fun deleteCartItemByProductId(cart_id: Int, prod_id: Int) {
-        productsDAO.deleteProductInCartById(cart_id, prod_id)
+
+    override fun deleteCartItemByProductId(cartId: Int?, prodId: Int?) : String {
+        prodId?.let {
+            if (cartId != null) {
+                productRepo.deleteProductInCartById(cartId, it)
+            }
+        }?:throw ProductNotFoundException("Item with - $prodId is not found in your cart")
+        return "Item with Product id $prodId has been deleted successfully"
     }
 
-    override fun addToCart(cart_id: Int, prod_id: Int): ProductDetails? {
-        val tempProd: Optional<ProductDetails> = productsDAO.findById(prod_id)
+    override fun addToCart(cartId: Int, prodId: Int?): ProductDetails {
+        val tempProd: Optional<ProductDetails> = prodId?.let { productRepo.findById(it) }?:throw ProductNotFoundException("Product with id - $prodId is not found ")
         val prod = tempProd.get()
-        val tempCart = cartRepo.findById(cart_id)
+        val tempCart = cartRepo.findById(cartId)
         val cart = tempCart.get()
         cart.add(prod)
         cartRepo.save(cart)

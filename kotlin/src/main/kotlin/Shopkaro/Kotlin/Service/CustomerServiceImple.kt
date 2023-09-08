@@ -55,4 +55,9 @@ class CustomerServiceImple : CustomerService{
         customerRepo.deleteById(id)
         return "User $id deleted Successfully"
     }
+
+    override fun updateDetails(customerDetails: CustomerDetails) {
+        customerRepo.save(customerDetails)
+    }
+
 }

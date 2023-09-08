@@ -15,6 +15,7 @@ interface CustomerService {
 
     fun deleteCustomer(id: Int): String?
 
+    fun updateDetails(customerDetails: CustomerDetails)
 
 
 }

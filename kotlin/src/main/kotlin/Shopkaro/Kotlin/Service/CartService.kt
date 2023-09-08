@@ -8,11 +8,11 @@ interface CartService {
 
 
 
-    fun showCartItems(id: Int): List<ProductDetails?>?
-    fun selectProductById(id: Int): ProductDetails?
-    fun deleteCartItemByProductId(cart_id: Int, prod_id: Int)
+    fun showCartItems(id: Int?): List<ProductDetails?>?
+    fun selectProductById(id: Int?): ProductDetails?
+    fun deleteCartItemByProductId(cartId: Int?, prodId: Int?):String
 
-    fun addToCart(cart_id: Int, prod_id: Int): ProductDetails?
+    fun addToCart(cartId: Int, prodId: Int?): ProductDetails?
 
 
 

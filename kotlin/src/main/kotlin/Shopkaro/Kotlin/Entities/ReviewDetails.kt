@@ -11,6 +11,9 @@ class ReviewDetails (
     @Column(name = "review_id")
     var reviewId : Int,
 
+    @Column(name = "name")
+    var name : String,
+
     @Column(name = "comment")
     var comment : String
 ){
