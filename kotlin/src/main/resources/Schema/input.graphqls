@@ -18,3 +18,7 @@ input addProduct{
     quantity : String,
     price : Int
 }
+input addReview{
+    name : String,
+    comment : String
+}

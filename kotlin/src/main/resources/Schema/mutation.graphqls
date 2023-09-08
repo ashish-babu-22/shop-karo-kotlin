@@ -1,24 +1,22 @@
 type Mutation{
 
-    #Mutation for Cart
+      #Mutation for Cart
       deleteCartItemByProductId(cartId: Int, prodId: Int!) : String
       addToCart(cartId: Int, prodId: Int): Product
 
-   #Mutation for Customer
+      #Mutation for Customer
       addCustomer(customerDetails: addCustomer): Customer
       deleteCustomer(id: Int): String
       updateDetails(customerDetails: modifyCustomer) : Customer
 
-   #Mutation for Product
+      #Mutation for Product
+      deleteProductById(id: Int) : String
+      addProduct(productDetails: addProduct): Product
+      updateProduct(productDetails: addProduct): Product
 
+      #Mutation for Order
+      checkOut(cartId: Int): Order
 
-
-    deleteProductById(id: Int) : String
-
-
-fun addProduct(productDetails: ProductDetails?): Product
-
-fun updateProduct(productDetails: ProductDetails?): ProductDetails?{
-return productService.updateProduct(productDetails)
-}
+      #Mutation for Review
+      addReview(cartId: Int, prodId: Int, review: addReview) : [Review]
 }

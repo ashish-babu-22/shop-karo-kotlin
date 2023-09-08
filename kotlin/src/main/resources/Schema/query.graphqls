@@ -1,3 +1,16 @@
 type Query{
 
+    #Query for Cart
+    showCartItems(id: Int): [Product]
+    selectProductById(id: Int): Product
+
+    #Query for Customer
+    listCustomers : [Customer]
+
+    #Query for Product
+    showProducts(id: Int): [Product]
+    viewProductById(prodId: Int): Product
+
+    #Query for Reviews
+    displayReviews(prodId: Int): [Review]
 }
