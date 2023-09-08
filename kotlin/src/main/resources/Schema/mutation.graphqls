@@ -1,0 +1,24 @@
+type Mutation{
+
+    #Mutation for Cart
+      deleteCartItemByProductId(cartId: Int, prodId: Int!) : String
+      addToCart(cartId: Int, prodId: Int): Product
+
+   #Mutation for Customer
+      addCustomer(customerDetails: addCustomer): Customer
+      deleteCustomer(id: Int): String
+      updateDetails(customerDetails: modifyCustomer) : Customer
+
+   #Mutation for Product
+
+
+
+    deleteProductById(id: Int) : String
+
+
+fun addProduct(productDetails: ProductDetails?): Product
+
+fun updateProduct(productDetails: ProductDetails?): ProductDetails?{
+return productService.updateProduct(productDetails)
+}
+}

@@ -1,0 +1,20 @@
+input addCustomer{
+    name : String!,
+    mail : String!,
+    location : String!,
+    contact : String!,
+    password : String!
+}
+input modifyCustomer{
+    customerId : Int!,
+    name : String,
+    mail : String,
+    location : String,
+    contact : String,
+    password : String
+}
+
+input addProduct{
+    quantity : String,
+    price : Int
+}

@@ -1,0 +1,36 @@
+type Customer{
+    customerId : Int,
+    name : String,
+    mail : String,
+    location : String,
+    contact : String
+}
+type Cart{
+    cartId : Int,
+    totalPrice : Int,
+    cartItems : [Product]
+}
+
+type Product{
+    productId : Int,
+    quantity : String,
+    price : Int,
+    reviews : [Review]
+}
+
+type Review{
+    reviewId : Int,
+    name : String,
+    comment : String
+}
+
+type Order{
+     orderId : Int,
+    name : String,
+    location : String,
+    DoO : String,
+    DoD : String,
+    amountPayable :  Int,
+    itemDetails: Cart
+}
+
