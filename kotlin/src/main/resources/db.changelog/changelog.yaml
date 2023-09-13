@@ -246,7 +246,7 @@ databaseChangeLog:
       author: ABZ
       changes:
         - createTable:
-            tableName: users
+            tableName: user
             columns:
               - column:
                   name: username
@@ -257,9 +257,13 @@ databaseChangeLog:
                   name: password
                   type: VARCHAR(30)
               - column:
+                  name: token
+                  type: VARCHAR(30)
+                  constraints:
+                    primaryKey: true
+              - column:
                   name: status
                   type: TINYINT
-
   - changeSet:
       id: 13
       author: ABZ
